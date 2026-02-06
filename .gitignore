@@ -1,0 +1,14 @@
+# IDE
+.idea/
+.vscode/
+
+# Python virtual environment
+.venv/
+venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local development
+*.log
