@@ -861,7 +861,7 @@ h1, h2, h3, h4, h5, h6 {
    ============================================ */
 .footer {
     background-color: var(--color-bg-primary);
-    padding: var(--spacing-lg) 0 var(--spacing-md);
+    padding: var(--spacing-lg) 0 calc(var(--spacing-md) + 50px);
     border-top: 1px solid var(--color-border);
 }
 
