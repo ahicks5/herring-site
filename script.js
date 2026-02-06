@@ -19,23 +19,24 @@
     const promoRibbon = document.getElementById('promoRibbon');
     const ribbonClose = document.getElementById('ribbonClose');
     const copyCodeBtn = document.getElementById('copyCode');
+    const bookContainer = document.getElementById('bookContainer');
+    const quoteCarousel = document.getElementById('quoteCarousel');
 
     // ===========================================
     // Configuration
     // ===========================================
     const CONFIG = {
-        popupDelay: 3000,           // 3 seconds before popup shows
-        scrollOffset: 80,           // Offset for smooth scroll (nav height)
-        sessionKey: 'lastCityPopupShown'
+        popupDelay: 3000,
+        scrollOffset: 80,
+        sessionKey: 'lastCityPopupShown',
+        launchDate: new Date('June 30, 2026 00:00:00').getTime(),
+        quoteRotateInterval: 5000
     };
 
     // ===========================================
     // Utility Functions
     // ===========================================
 
-    /**
-     * Debounce function for scroll events
-     */
     function debounce(func, wait) {
         let timeout;
         return function executedFunction(...args) {
@@ -48,26 +49,10 @@
         };
     }
 
-    /**
-     * Check if element is in viewport
-     */
-    function isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    }
-
     // ===========================================
     // Navigation
     // ===========================================
 
-    /**
-     * Handle navbar background on scroll
-     */
     function handleNavbarScroll() {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -76,27 +61,18 @@
         }
     }
 
-    /**
-     * Toggle mobile menu
-     */
     function toggleMobileMenu() {
         navToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
         document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     }
 
-    /**
-     * Close mobile menu
-     */
     function closeMobileMenu() {
         navToggle.classList.remove('active');
         navMenu.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    /**
-     * Smooth scroll to section
-     */
     function smoothScrollTo(targetId) {
         const target = document.querySelector(targetId);
         if (!target) return;
@@ -111,43 +87,233 @@
     }
 
     // ===========================================
+    // Parallax Effect
+    // ===========================================
+
+    function initParallax() {
+        const parallaxElements = document.querySelectorAll('[data-parallax]');
+
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+
+            parallaxElements.forEach(el => {
+                const speed = parseFloat(el.dataset.speed) || 0.5;
+                const yPos = -(scrolled * speed);
+                el.style.transform = `translateY(${yPos}px)`;
+            });
+        }
+
+        window.addEventListener('scroll', debounce(updateParallax, 10));
+    }
+
+    // ===========================================
+    // 3D Book Effect
+    // ===========================================
+
+    function init3DBook() {
+        if (!bookContainer) return;
+
+        const book3d = bookContainer.querySelector('.book-3d');
+        if (!book3d) return;
+
+        bookContainer.addEventListener('mousemove', (e) => {
+            const rect = bookContainer.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            const mouseX = e.clientX - centerX;
+            const mouseY = e.clientY - centerY;
+
+            const rotateY = (mouseX / rect.width) * 30;
+            const rotateX = -(mouseY / rect.height) * 15;
+
+            book3d.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+        });
+
+        bookContainer.addEventListener('mouseleave', () => {
+            book3d.style.transform = 'rotateY(0deg) rotateX(0deg)';
+        });
+    }
+
+    // ===========================================
+    // Countdown Timer
+    // ===========================================
+
+    function initCountdown() {
+        const daysEl = document.getElementById('countDays');
+        const hoursEl = document.getElementById('countHours');
+        const minutesEl = document.getElementById('countMinutes');
+        const secondsEl = document.getElementById('countSeconds');
+
+        if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = CONFIG.launchDate - now;
+
+            if (distance < 0) {
+                daysEl.textContent = '00';
+                hoursEl.textContent = '00';
+                minutesEl.textContent = '00';
+                secondsEl.textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            daysEl.textContent = String(days).padStart(2, '0');
+            hoursEl.textContent = String(hours).padStart(2, '0');
+            minutesEl.textContent = String(minutes).padStart(2, '0');
+            secondsEl.textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    }
+
+    // ===========================================
+    // Quote Carousel
+    // ===========================================
+
+    function initQuoteCarousel() {
+        if (!quoteCarousel) return;
+
+        const slides = quoteCarousel.querySelectorAll('.quote-slide');
+        const dots = quoteCarousel.querySelectorAll('.quote-dot');
+        let currentSlide = 0;
+        let autoRotate;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }
+
+        function startAutoRotate() {
+            autoRotate = setInterval(nextSlide, CONFIG.quoteRotateInterval);
+        }
+
+        function stopAutoRotate() {
+            clearInterval(autoRotate);
+        }
+
+        // Dot click handlers
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                stopAutoRotate();
+                showSlide(index);
+                startAutoRotate();
+            });
+        });
+
+        // Pause on hover
+        quoteCarousel.addEventListener('mouseenter', stopAutoRotate);
+        quoteCarousel.addEventListener('mouseleave', startAutoRotate);
+
+        startAutoRotate();
+    }
+
+    // ===========================================
+    // Share Buttons
+    // ===========================================
+
+    function initShareButtons() {
+        const shareButtons = document.querySelectorAll('.share-btn');
+
+        shareButtons.forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const shareType = btn.dataset.share;
+                const pageUrl = encodeURIComponent(window.location.href);
+                const shareText = encodeURIComponent('Survival demands sacrifice. Freedom demands blood. Check out this dark fantasy novel - The Last City: Age of Darkness!');
+
+                let shareUrl;
+
+                switch (shareType) {
+                    case 'twitter':
+                        shareUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=${pageUrl}`;
+                        window.open(shareUrl, '_blank', 'width=550,height=420');
+                        break;
+
+                    case 'facebook':
+                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+                        window.open(shareUrl, '_blank', 'width=550,height=420');
+                        break;
+
+                    case 'copy':
+                        try {
+                            await navigator.clipboard.writeText(window.location.href);
+                            const originalHTML = btn.innerHTML;
+                            btn.innerHTML = `
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            `;
+                            btn.style.backgroundColor = '#4ade80';
+                            btn.style.borderColor = '#4ade80';
+
+                            setTimeout(() => {
+                                btn.innerHTML = originalHTML;
+                                btn.style.backgroundColor = '';
+                                btn.style.borderColor = '';
+                            }, 2000);
+                        } catch (err) {
+                            console.error('Failed to copy:', err);
+                        }
+                        break;
+                }
+            });
+        });
+    }
+
+    // ===========================================
+    // Character Cards (Mobile Touch)
+    // ===========================================
+
+    function initCharacterCards() {
+        const cards = document.querySelectorAll('.character-card');
+
+        cards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    this.classList.toggle('flipped');
+                }
+            });
+        });
+    }
+
+    // ===========================================
     // Promo Modal
     // ===========================================
 
-    /**
-     * Show the promo modal
-     */
     function showPromoModal() {
         promoModal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 
-    /**
-     * Hide the promo modal
-     */
     function hidePromoModal() {
         promoModal.classList.remove('active');
         document.body.style.overflow = '';
-
-        // Show the ribbon after closing modal
         showPromoRibbon();
-
-        // Mark popup as shown for this session
         sessionStorage.setItem(CONFIG.sessionKey, 'true');
     }
 
-    /**
-     * Initialize popup with delay (only once per session)
-     */
     function initPromoPopup() {
-        // Check if popup was already shown this session
         if (sessionStorage.getItem(CONFIG.sessionKey)) {
-            // Popup was already shown, just show the ribbon
             showPromoRibbon();
             return;
         }
-
-        // Show popup after delay
         setTimeout(showPromoModal, CONFIG.popupDelay);
     }
 
@@ -155,16 +321,10 @@
     // Promo Ribbon
     // ===========================================
 
-    /**
-     * Show the promo ribbon
-     */
     function showPromoRibbon() {
         promoRibbon.classList.add('visible');
     }
 
-    /**
-     * Hide the promo ribbon
-     */
     function hidePromoRibbon() {
         promoRibbon.classList.remove('visible');
     }
@@ -173,16 +333,12 @@
     // Copy to Clipboard
     // ===========================================
 
-    /**
-     * Copy promo code to clipboard
-     */
     async function copyPromoCode() {
         const code = 'LASTCITY10';
 
         try {
             await navigator.clipboard.writeText(code);
 
-            // Visual feedback
             const originalHTML = copyCodeBtn.innerHTML;
             copyCodeBtn.innerHTML = `
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -196,7 +352,6 @@
                 copyCodeBtn.style.color = '';
             }, 2000);
         } catch (err) {
-            // Fallback for older browsers
             const textarea = document.createElement('textarea');
             textarea.value = code;
             textarea.style.position = 'fixed';
@@ -212,9 +367,6 @@
     // Form Handling
     // ===========================================
 
-    /**
-     * Handle newsletter form submission
-     */
     function handleFormSubmit(event) {
         event.preventDefault();
 
@@ -222,11 +374,8 @@
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
 
-        // Here you would typically send the data to your newsletter service
-        // For now, we'll just show a success message
         console.log('Form submitted:', data);
 
-        // Show success feedback
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Subscribed!';
@@ -245,9 +394,6 @@
     // Lazy Loading Images
     // ===========================================
 
-    /**
-     * Initialize lazy loading for images
-     */
     function initLazyLoading() {
         const lazyImages = document.querySelectorAll('img[loading="lazy"]');
 
@@ -273,12 +419,9 @@
     // Scroll Animations
     // ===========================================
 
-    /**
-     * Initialize scroll-triggered animations
-     */
     function initScrollAnimations() {
         const animatedElements = document.querySelectorAll(
-            '.section-header, .book-description, .book-sidebar, .author-content, .newsletter-content'
+            '.section-header, .book-description, .book-sidebar, .author-content, .newsletter-content, .characters-grid'
         );
 
         if ('IntersectionObserver' in window) {
@@ -308,13 +451,10 @@
     // ===========================================
 
     function initEventListeners() {
-        // Navbar scroll effect
         window.addEventListener('scroll', debounce(handleNavbarScroll, 10));
 
-        // Mobile menu toggle
         navToggle.addEventListener('click', toggleMobileMenu);
 
-        // Close mobile menu when clicking nav links
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
@@ -326,7 +466,6 @@
             });
         });
 
-        // Smooth scroll for all anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
                 const href = anchor.getAttribute('href');
@@ -337,40 +476,33 @@
             });
         });
 
-        // Modal close button
         modalClose.addEventListener('click', hidePromoModal);
 
-        // Close modal when clicking overlay
         promoModal.addEventListener('click', (e) => {
             if (e.target === promoModal) {
                 hidePromoModal();
             }
         });
 
-        // Close modal with Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && promoModal.classList.contains('active')) {
                 hidePromoModal();
             }
         });
 
-        // Ribbon click opens modal
         promoRibbon.addEventListener('click', (e) => {
             if (e.target !== ribbonClose && !ribbonClose.contains(e.target)) {
                 showPromoModal();
             }
         });
 
-        // Ribbon close button
         ribbonClose.addEventListener('click', (e) => {
             e.stopPropagation();
             hidePromoRibbon();
         });
 
-        // Copy promo code
         copyCodeBtn.addEventListener('click', copyPromoCode);
 
-        // Form submissions
         document.querySelectorAll('form').forEach(form => {
             form.addEventListener('submit', handleFormSubmit);
         });
@@ -381,23 +513,21 @@
     // ===========================================
 
     function init() {
-        // Set initial navbar state
         handleNavbarScroll();
-
-        // Initialize event listeners
         initEventListeners();
-
-        // Initialize lazy loading
         initLazyLoading();
-
-        // Initialize scroll animations
         initScrollAnimations();
-
-        // Initialize promo popup (after delay)
         initPromoPopup();
+
+        // New features
+        initParallax();
+        init3DBook();
+        initCountdown();
+        initQuoteCarousel();
+        initShareButtons();
+        initCharacterCards();
     }
 
-    // Run when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
