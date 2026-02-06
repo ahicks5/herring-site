@@ -183,6 +183,8 @@
 
         const slides = quoteCarousel.querySelectorAll('.quote-slide');
         const dots = quoteCarousel.querySelectorAll('.quote-dot');
+        const arrowLeft = quoteCarousel.querySelector('.quote-arrow-left');
+        const arrowRight = quoteCarousel.querySelector('.quote-arrow-right');
         let currentSlide = 0;
         let autoRotate;
 
@@ -201,12 +203,34 @@
             showSlide(next);
         }
 
+        function prevSlide() {
+            const prev = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(prev);
+        }
+
         function startAutoRotate() {
             autoRotate = setInterval(nextSlide, CONFIG.quoteRotateInterval);
         }
 
         function stopAutoRotate() {
             clearInterval(autoRotate);
+        }
+
+        // Arrow click handlers
+        if (arrowLeft) {
+            arrowLeft.addEventListener('click', () => {
+                stopAutoRotate();
+                prevSlide();
+                startAutoRotate();
+            });
+        }
+
+        if (arrowRight) {
+            arrowRight.addEventListener('click', () => {
+                stopAutoRotate();
+                nextSlide();
+                startAutoRotate();
+            });
         }
 
         // Dot click handlers
