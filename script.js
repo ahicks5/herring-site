@@ -286,10 +286,24 @@
 
         cards.forEach(card => {
             card.addEventListener('click', function(e) {
-                if (window.innerWidth <= 768) {
+                // On mobile/tablet, tap to flip
+                if (window.innerWidth < 900) {
+                    // Close other cards first
+                    cards.forEach(otherCard => {
+                        if (otherCard !== this) {
+                            otherCard.classList.remove('flipped');
+                        }
+                    });
                     this.classList.toggle('flipped');
                 }
             });
+        });
+
+        // Close flipped cards when tapping outside
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth < 900 && !e.target.closest('.character-card')) {
+                cards.forEach(card => card.classList.remove('flipped'));
+            }
         });
     }
 
