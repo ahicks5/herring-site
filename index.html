@@ -3,472 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Chrislyn R. Herring is a dark fantasy author from Texas. Discover her debut novel, sign up for release updates, and connect.">
-    <meta name="keywords" content="Chrislyn R. Herring, author, dark fantasy, fantasy author, The Last City, debut novel">
+    <meta name="description" content="Chrislyn R. Herring is a dark fantasy author from Texas. Welcome — discover her upcoming debut novel and join the newsletter.">
     <meta name="author" content="Chrislyn R. Herring">
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Chrislyn R. Herring | Dark Fantasy Author">
-    <meta property="og:description" content="Dark fantasy author from Texas. Discover the debut novel and sign up for release updates.">
+    <meta property="og:title" content="Chrislyn R. Herring — Dark Fantasy Author">
+    <meta property="og:description" content="Dark fantasy author from Texas. Discover the upcoming debut novel and join the newsletter.">
     <meta property="og:image" content="https://ahicks5.github.io/herring-site/images/author.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ahicks5.github.io/herring-site/">
-    <meta property="og:site_name" content="Chrislyn R. Herring">
-
-    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Chrislyn R. Herring | Dark Fantasy Author">
-    <meta name="twitter:description" content="Dark fantasy author from Texas. Discover the debut novel and sign up for release updates.">
-    <meta name="twitter:image" content="https://ahicks5.github.io/herring-site/images/author.png">
-
-    <title>Chrislyn R. Herring | Dark Fantasy Author</title>
-
-    <!-- Favicon -->
+    <title>Chrislyn R. Herring — Dark Fantasy Author</title>
     <link rel="icon" type="image/png" href="images/logo.png">
-
-    <!-- Google Fonts: Playfair Display (headings, echoes the CR monogram) + Raleway (body/UI) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <!-- Stylesheet -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">
-                <img src="images/logo.png" alt="Chrislyn R. Herring" class="nav-logo-img">
+
+    <header class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo" aria-label="Chrislyn R. Herring — home">
+                <img src="images/logo.png" alt="CR Herring monogram" class="nav__logo-img">
             </a>
-
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
-                <span class="hamburger"></span>
-            </button>
-
-            <ul class="nav-menu" id="navMenu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#books" class="nav-link">Books</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#author" class="nav-link">The Author</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#connect" class="nav-link">Connect</a>
-                </li>
-                <li class="nav-item nav-cta">
-                    <a href="#connect" class="btn btn-primary btn-nav">Newsletter</a>
-                </li>
-            </ul>
+            <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            <nav class="nav__menu" id="navMenu">
+                <a href="index.html" class="nav__link nav__link--active">Home</a>
+                <a href="books.html" class="nav__link">Books</a>
+                <a href="about.html" class="nav__link">About</a>
+                <a href="connect.html" class="nav__link">Connect</a>
+                <a href="connect.html" class="btn btn--solid nav__cta">Newsletter</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section: Author Introduction -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-text">
-                <p class="hero-eyebrow">Dark Fantasy Author</p>
-                <h1 class="hero-title">
-                    <span class="title-main">Chrislyn R. Herring</span>
-                </h1>
-                <p class="hero-tagline" id="heroTagline">
-                    <span class="tagline-word">Worlds</span>
-                    <span class="tagline-word">where</span>
-                    <span class="tagline-word">survival</span>
-                    <span class="tagline-word">demands</span>
-                    <span class="tagline-word">sacrifice.</span>
-                </p>
-                <p class="hero-intro">Texas-born storyteller crafting dark, immersive fantasy. Her debut novel is on the way &mdash; step into the world.</p>
-                <div class="hero-cta">
-                    <a href="#books" class="btn btn-primary btn-lg">Explore the Book</a>
-                    <a href="#connect" class="btn btn-secondary btn-lg">Join the Newsletter</a>
-                </div>
-            </div>
-            <div class="hero-book" id="bookContainer">
-                <div class="book-glow"></div>
-                <div class="book-3d">
-                    <div class="book-spine"></div>
-                    <img src="images/book-cover.jfif" alt="The Last City: Age of Darkness book cover" class="book-cover">
-                </div>
+    <!-- HERO: welcome -->
+    <section class="hero">
+        <svg class="hero__sprig hero__sprig--tl" viewBox="0 0 120 120" aria-hidden="true"><use href="#sprig"></use></svg>
+        <svg class="hero__sprig hero__sprig--br" viewBox="0 0 120 120" aria-hidden="true"><use href="#sprig"></use></svg>
+        <div class="hero__inner">
+            <p class="eyebrow">Dark Fantasy Author &middot; Texas</p>
+            <h1 class="hero__name">Chrislyn<br>R. Herring</h1>
+            <p class="hero__tagline">Worlds where survival demands sacrifice &mdash; and freedom demands blood.</p>
+            <p class="hero__intro">Welcome &mdash; I'm so glad you're here. Step into the dark, immersive worlds I'm building from Austin, Texas. My debut novel is on its way.</p>
+            <div class="hero__cta">
+                <a href="books.html" class="btn btn--solid btn--lg">Upcoming Books</a>
+                <a href="connect.html" class="btn btn--ghost btn--lg">Join the Newsletter</a>
             </div>
         </div>
     </section>
 
-    <!-- Featured Upcoming Book + Countdown -->
-    <section class="countdown-section" id="countdown">
-        <div class="container">
-            <p class="countdown-eyebrow">Coming Soon</p>
-            <h2 class="countdown-title">The Last City: Age of Darkness</h2>
-            <div class="countdown-timer" id="countdownTimer">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="countDays">00</span>
-                    <span class="countdown-label">Days</span>
-                </div>
-                <div class="countdown-separator">:</div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="countHours">00</span>
-                    <span class="countdown-label">Hours</span>
-                </div>
-                <div class="countdown-separator">:</div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="countMinutes">00</span>
-                    <span class="countdown-label">Minutes</span>
-                </div>
-                <div class="countdown-separator">:</div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="countSeconds">00</span>
-                    <span class="countdown-label">Seconds</span>
-                </div>
+    <!-- HOME HIGHLIGHT: upcoming book + countdown -->
+    <section class="highlight">
+        <div class="wrap highlight__inner">
+            <div class="highlight__cover reveal">
+                <a href="books.html"><img src="images/book-cover.jfif" alt="The Last City: Age of Darkness — book cover"></a>
             </div>
-            <p class="countdown-date">June 30, 2026</p>
-            <a href="#connect" class="btn btn-secondary">Get Release Reminders</a>
-        </div>
-    </section>
-
-    <!-- Books Section -->
-    <section class="section book-section" id="books">
-        <div class="container">
-            <header class="section-header">
-                <p class="section-eyebrow">The Books</p>
-                <h2 class="section-title">The Last City: Age of Darkness</h2>
-                <div class="title-accent"></div>
-                <p class="section-subtitle">Book One &mdash; A Dark Fantasy Epic</p>
-            </header>
-
-            <div class="book-content">
-                <div class="book-description">
-                    <div class="synopsis">
-                        <p>Driven by desperation, Elena is on the brink of selling herself to the Den &mdash; a grim fate where bodies are commodities for the elite and the privileged few. Despite the pleas of her sister and best friend to explore other options, Elena's panic sends her sprinting toward the Door. In a twist of fate, it swings open, allowing Elena and Bren a taste of freedom in the outside world. However, before they can make it to the forest's protection, they are shot down, dragging them into the clutches of Hell's Keep, beneath the minister's residence.</p>
-
-                        <p>Meanwhile, Bren finds himself thrust into a perilous alliance with the minister, forced to serve as his assassin to ensure Elena's survival. Faced with the moral quandary of sacrificing his humanity to preserve her life, Bren forms unexpected bonds with fellow assassins, Klaus and Thomas, blurring the lines between friend and foe. As their destinies intertwine, they hurtle toward a pivotal moment where the minister's revelation threatens to reshape their world, leaving them poised on uncertainty.</p>
-
-                        <p>Unaware of her sister's fate, Alasea struggles with the grim reality of her belief in Elena's and Bren's deaths &mdash; all while her mother sits as the minister's captive, awaiting her death on the Red Wall. Broken and alone, Alasea embarks on a quest for survival, guided by her mother's cryptic mention of a Book that holds the key to their family's history and the city's blood-woven past.</p>
-                    </div>
-
-                    <div class="genre-tags">
-                        <span class="genre-tag">Dark Fantasy</span>
-                        <span class="genre-tag">Epic Adventure</span>
-                        <span class="genre-tag">Dystopian</span>
-                        <span class="genre-tag">Survival</span>
-                    </div>
-
-                    <!-- Share Buttons -->
-                    <div class="share-section">
-                        <span class="share-label">Share this book:</span>
-                        <div class="share-buttons">
-                            <button class="share-btn" data-share="twitter" aria-label="Share on Twitter">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                                </svg>
-                            </button>
-                            <button class="share-btn" data-share="facebook" aria-label="Share on Facebook">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                                </svg>
-                            </button>
-                            <button class="share-btn" data-share="copy" aria-label="Copy link">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
+            <div class="highlight__text reveal">
+                <p class="eyebrow eyebrow--light">Upcoming Release</p>
+                <h2 class="highlight__title">The Last City: Age of Darkness</h2>
+                <p class="highlight__sub">Book One &middot; A Dark Fantasy Epic</p>
+                <div class="countdown">
+                    <div class="countdown__cell"><span class="countdown__num" id="cdDays">00</span><span class="countdown__lbl">Days</span></div>
+                    <div class="countdown__cell"><span class="countdown__num" id="cdHours">00</span><span class="countdown__lbl">Hours</span></div>
+                    <div class="countdown__cell"><span class="countdown__num" id="cdMins">00</span><span class="countdown__lbl">Minutes</span></div>
+                    <div class="countdown__cell"><span class="countdown__num" id="cdSecs">00</span><span class="countdown__lbl">Seconds</span></div>
                 </div>
-
-                <aside class="book-sidebar">
-                    <div class="book-cover-card">
-                        <img src="images/book-cover.jfif" alt="The Last City: Age of Darkness book cover" class="book-cover-static">
-                        <p class="book-status">Coming June 30, 2026</p>
-                    </div>
-
-                    <!-- Quote Carousel -->
-                    <div class="quote-carousel" id="quoteCarousel">
-                        <button class="quote-arrow quote-arrow-left" aria-label="Previous quote">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                        </button>
-                        <div class="quote-slides">
-                            <blockquote class="quote-slide active">
-                                <div class="quote-mark">&ldquo;</div>
-                                <p class="quote-text">A world so vivid and ruthless, you'll forget to breathe.</p>
-                                <div class="quote-attribution">&mdash; Early Reader Review</div>
-                            </blockquote>
-                            <blockquote class="quote-slide">
-                                <div class="quote-mark">&ldquo;</div>
-                                <p class="quote-text">Dark, gripping, and impossible to put down. A stunning debut.</p>
-                                <div class="quote-attribution">&mdash; Beta Reader</div>
-                            </blockquote>
-                            <blockquote class="quote-slide">
-                                <div class="quote-mark">&ldquo;</div>
-                                <p class="quote-text">The characters will haunt you long after the final page.</p>
-                                <div class="quote-attribution">&mdash; ARC Reviewer</div>
-                            </blockquote>
-                            <blockquote class="quote-slide">
-                                <div class="quote-mark">&ldquo;</div>
-                                <p class="quote-text">A masterful blend of despair and hope. Simply unforgettable.</p>
-                                <div class="quote-attribution">&mdash; Book Blogger</div>
-                            </blockquote>
-                        </div>
-                        <button class="quote-arrow quote-arrow-right" aria-label="Next quote">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                        </button>
-                        <div class="quote-dots">
-                            <button class="quote-dot active" data-slide="0" aria-label="Quote 1"></button>
-                            <button class="quote-dot" data-slide="1" aria-label="Quote 2"></button>
-                            <button class="quote-dot" data-slide="2" aria-label="Quote 3"></button>
-                            <button class="quote-dot" data-slide="3" aria-label="Quote 4"></button>
-                        </div>
-                    </div>
-
-                    <a href="#connect" class="btn btn-primary btn-lg btn-block">Notify Me at Release</a>
-                </aside>
-            </div>
-
-            <!-- Characters -->
-            <div class="characters-block">
-                <header class="section-header section-header-sub">
-                    <h3 class="section-subtitle-heading">Meet the Characters</h3>
-                </header>
-                <div class="characters-grid">
-                    <!-- Elena Card -->
-                    <div class="character-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="character-icon">E</div>
-                                <h3 class="character-name">Elena</h3>
-                                <p class="character-role">The Desperate Sister</p>
-                            </div>
-                            <div class="card-back">
-                                <h3 class="character-name">Elena</h3>
-                                <p class="character-bio">Driven to the brink by desperation, Elena faces an impossible choice: sell herself to the Den or watch her family perish. Her sprint toward freedom sets in motion events that will change everything.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Bren Card -->
-                    <div class="character-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="character-icon">B</div>
-                                <h3 class="character-name">Bren</h3>
-                                <p class="character-role">The Reluctant Assassin</p>
-                            </div>
-                            <div class="card-back">
-                                <h3 class="character-name">Bren</h3>
-                                <p class="character-bio">Forced into a deadly alliance with the minister, Bren must become an assassin to keep Elena alive. But how much of his humanity will he sacrifice to save the one he loves?</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Alasea Card -->
-                    <div class="character-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="character-icon">A</div>
-                                <h3 class="character-name">Alasea</h3>
-                                <p class="character-role">The Survivor</p>
-                            </div>
-                            <div class="card-back">
-                                <h3 class="character-name">Alasea</h3>
-                                <p class="character-bio">Believing her sister dead and her mother condemned, Alasea must find the strength to survive alone. A mysterious Book may hold the secrets to her family's past&mdash;and the city's dark future.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p class="characters-hint">Hover or tap to reveal their stories</p>
+                <p class="highlight__date">Releasing June 30, 2026</p>
+                <a href="books.html" class="btn btn--light btn--lg">Learn More</a>
             </div>
         </div>
     </section>
 
-    <!-- Meet the Author Section -->
-    <section class="section author-section" id="author">
-        <div class="container">
-            <header class="section-header">
-                <p class="section-eyebrow">The Author</p>
-                <h2 class="section-title">Meet Chrislyn</h2>
-                <div class="title-accent"></div>
-            </header>
-
-            <div class="author-content">
-                <div class="author-image-wrapper">
-                    <div class="author-image-frame">
-                        <img src="images/author.png"
-                             alt="Chrislyn R. Herring, dark fantasy author"
-                             class="author-image"
-                             loading="lazy">
-                    </div>
-                </div>
-
-                <div class="author-bio">
-                    <h3 class="author-name">Chrislyn R. Herring</h3>
-                    <p>Chrislyn R. Herring hails from a small town in South Texas, where her passion for writing and storytelling began. Drawing inspiration from literary giants like J.R.R. Tolkien and contemporary masters such as Sarah J. Maas, she continued on her writing journey with a degree in English Literature from Texas A&amp;M University. Today, she resides and crafts her stories in the vibrant city of Austin, Texas, alongside her friends and family, where every day brings new inspiration and creativity to her work. When she is not writing in coffee shops, Chrislyn spends most of her time in the climbing gym, trying new cuisine, and out in nature.</p>
-
-                    <div class="author-social">
-                        <span class="social-label">Connect with Chrislyn:</span>
-                        <div class="social-links">
-                            <a href="https://instagram.com/c.r.herring" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
-                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                </svg>
-                            </a>
-                            <a href="#" class="social-link" aria-label="TikTok">
-                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Connect / Newsletter Section -->
-    <section class="section newsletter-section" id="connect">
-        <div class="container">
-            <div class="newsletter-content">
-                <header class="newsletter-header">
-                    <p class="section-eyebrow">Connect</p>
-                    <h2 class="section-title">Stay in the Story</h2>
-                    <p class="newsletter-subtitle">Join the newsletter for release reminders, behind-the-scenes updates, and first access to Chrislyn's world. No spam &mdash; just the good stuff.</p>
-                </header>
-
-                <form class="newsletter-form" action="#newsletter-signup" method="POST">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="newsletter-name" class="visually-hidden">Your Name</label>
-                            <input type="text"
-                                   id="newsletter-name"
-                                   name="name"
-                                   placeholder="Your Name"
-                                   required
-                                   class="form-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="newsletter-email" class="visually-hidden">Email Address</label>
-                            <input type="email"
-                                   id="newsletter-email"
-                                   name="email"
-                                   placeholder="Email Address"
-                                   required
-                                   class="form-input">
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-lg">Subscribe</button>
-                    </div>
-                    <p class="form-note">Release alerts, blog updates, and announcements. Unsubscribe anytime.</p>
-                </form>
-
-                <div class="connect-social">
-                    <span class="social-label">Or follow along:</span>
-                    <div class="social-links">
-                        <a href="https://instagram.com/c.r.herring" target="_blank" rel="noopener noreferrer" class="social-link social-link-lg" aria-label="Instagram">
-                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link social-link-lg" aria-label="TikTok">
-                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="images/logo.png" alt="Chrislyn R. Herring" class="footer-logo-img">
-                </div>
-
-                <nav class="footer-nav">
-                    <a href="#home" class="footer-link">Home</a>
-                    <a href="#books" class="footer-link">Books</a>
-                    <a href="#author" class="footer-link">The Author</a>
-                    <a href="#connect" class="footer-link">Connect</a>
-                </nav>
-
-                <div class="footer-social">
-                    <a href="https://instagram.com/c.r.herring" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
-                        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="TikTok">
-                        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p class="copyright">&copy; 2026 Chrislyn R. Herring. All rights reserved.</p>
-                <p class="footer-credit">Crafted with &#10084;</p>
-            </div>
+        <div class="wrap footer__inner">
+            <img src="images/logo.png" alt="CR Herring monogram" class="footer__logo">
+            <nav class="footer__nav">
+                <a href="index.html">Home</a>
+                <a href="books.html">Books</a>
+                <a href="about.html">About</a>
+                <a href="connect.html">Connect</a>
+            </nav>
+            <p class="footer__copy">&copy; 2026 Chrislyn R. Herring. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Newsletter Popup Modal -->
-    <div class="modal-overlay" id="promoModal">
-        <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
-            <button class="modal-close" id="modalClose" aria-label="Close popup">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="sprig" viewBox="0 0 120 120">
+            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M60 110 C60 80 60 55 60 30"/>
+                <path d="M60 80 C44 74 36 60 38 46 C54 50 62 64 60 80Z" fill="currentColor" stroke="none" opacity=".9"/>
+                <path d="M60 64 C76 58 84 44 82 30 C66 34 58 48 60 64Z" fill="currentColor" stroke="none" opacity=".9"/>
+                <path d="M60 44 C46 40 40 28 42 16 C56 20 62 32 60 44Z" fill="currentColor" stroke="none" opacity=".9"/>
+                <circle cx="60" cy="22" r="4" fill="currentColor" stroke="none"/>
+            </g>
+        </symbol>
+    </svg>
 
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="modalTitle">Step Into the World</h3>
-                    <p class="modal-subtitle">Be first to know when <em>The Last City</em> releases &mdash; plus updates, bonus content, and more.</p>
-                </div>
-
-                <div class="modal-newsletter">
-                    <form class="modal-form" action="#newsletter-signup" method="POST">
-                        <div class="form-group">
-                            <input type="text"
-                                   name="name"
-                                   placeholder="Your Name"
-                                   required
-                                   class="form-input">
-                        </div>
-                        <div class="form-group">
-                            <input type="email"
-                                   name="email"
-                                   placeholder="Email Address"
-                                   required
-                                   class="form-input">
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block btn-lg">Join the Newsletter</button>
-                    </form>
-                    <p class="modal-note">No spam, ever. Unsubscribe anytime.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bottom Ribbon Banner -->
-    <div class="promo-ribbon" id="promoRibbon">
-        <span class="ribbon-emoji">&#127807;</span>
-        <span class="ribbon-text">Join the newsletter for release updates</span>
-        <button class="ribbon-close" id="ribbonClose" aria-label="Close ribbon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
-    </div>
-
-    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
