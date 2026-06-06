@@ -1,209 +1,39 @@
-# The Last City: Age of Darkness - Author Website
+# Chrislyn R. Herring — Author Website
 
-A dark, gothic single-page website for Chrislyn R. Herring's debut novel "The Last City: Age of Darkness".
+A clean, literary single-page website for dark fantasy author **Chrislyn R. Herring**, with her
+upcoming debut novel featured prominently.
+
+Aesthetic: *forest whimsical* — cream base, forest-green accent, elegant serif headings (Playfair
+Display) over a simple sans-serif body (Raleway).
 
 Built with vanilla HTML, CSS, and JavaScript — no frameworks, no build tools required.
 
 ---
 
+## Structure
+
+Single page, anchor-based navigation (same deploy model as before — nothing about hosting changes):
+
+| Section | Anchor | Purpose |
+|---------|--------|---------|
+| **Home** | `#home` | Author intro hero + name, tagline, primary CTAs |
+| **Countdown** | `#countdown` | Featured upcoming book + live release countdown |
+| **Books** | `#books` | The book: cover, full synopsis, genre, characters, "coming soon" |
+| **The Author** | `#author` | Bio + headshot |
+| **Connect** | `#connect` | Newsletter signup (the #1 CTA) + TikTok / Instagram |
+
+Newsletter signup is the primary goal — it appears in the Connect section, in the timed popup
+modal, and via the persistent bottom ribbon.
+
+---
+
 ## Quick Start
 
-### Preview Locally
-
-Simply open `index.html` in your web browser:
-
-1. Navigate to the `the-last-city-website` folder
-2. Double-click `index.html` to open in your default browser
-3. Or right-click → "Open with" → Choose your preferred browser
-
-For development with live reload, you can use any simple HTTP server:
+Open `index.html` in your browser, or run any static server:
 
 ```bash
-# Using Python 3
-python -m http.server 8000
-
-# Using Node.js (npx)
-npx serve
-
-# Using PHP
-php -S localhost:8000
-```
-
-Then visit `http://localhost:8000` in your browser.
-
----
-
-## Deploy to Production
-
-### Netlify (Drag & Drop)
-
-1. Go to [netlify.com](https://netlify.com) and sign up/log in
-2. From your dashboard, drag the entire `the-last-city-website` folder onto the deploy zone
-3. Done! Your site will be live at a random Netlify subdomain
-4. (Optional) Configure a custom domain in Site Settings → Domain Management
-
-### Netlify (Git Integration)
-
-1. Push this folder to a GitHub/GitLab/Bitbucket repository
-2. In Netlify, click "Add new site" → "Import an existing project"
-3. Connect your repository
-4. Deploy settings:
-   - Build command: (leave blank)
-   - Publish directory: `./` or the folder name
-5. Click "Deploy site"
-
-### GitHub Pages
-
-1. Create a new GitHub repository
-2. Push all files to the `main` branch
-3. Go to repository Settings → Pages
-4. Under "Source", select "Deploy from a branch"
-5. Select `main` branch and `/ (root)` folder
-6. Click Save
-7. Your site will be live at `https://yourusername.github.io/repository-name`
-
-### Vercel
-
-1. Push to a Git repository
-2. Import the project at [vercel.com](https://vercel.com)
-3. Framework preset: "Other"
-4. Deploy
-
----
-
-## Customization Guide
-
-### Replace Images
-
-Add your actual images to the `images/` folder:
-
-| File | Recommended Size | Notes |
-|------|-----------------|-------|
-| `book-cover.jpg` | 600×900px (2:3 ratio) | High quality, optimized for web |
-| `author-photo.jpg` | 600×800px (3:4 ratio) | Professional headshot |
-| `favicon.png` | 32×32px or 64×64px | Square, simple design |
-
-### Update Purchase URL
-
-Search for `#` placeholders that link to the book purchase page:
-
-**In `index.html`:**
-```html
-<!-- Find all instances of: -->
-<a href="#" class="btn btn-primary
-
-<!-- Replace "#" with your actual purchase URL, e.g.: -->
-<a href="https://www.amazon.com/dp/YOUR_BOOK_ID" class="btn btn-primary
-```
-
-Locations to update:
-- Hero section "Get Your Copy" button (line ~70)
-- Book section "Order Now" button (line ~113)
-- Modal "Claim Your Discount" button (line ~202)
-- Nav "Get Your Copy" button (line ~45)
-
-### Update Promo Code
-
-**In `index.html`** (line ~198):
-```html
-<span class="code">LASTCITY10</span>
-```
-
-**In `script.js`** (line ~159):
-```javascript
-const code = 'LASTCITY10';
-```
-
-### Connect Newsletter Form
-
-Replace the placeholder form action with your email service endpoint:
-
-**In `index.html`**, find all instances of:
-```html
-action="#newsletter-signup"
-```
-
-Replace with your actual endpoint:
-
-**Mailchimp:**
-```html
-action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&id=YOUR_ID"
-```
-
-**ConvertKit:**
-```html
-action="https://app.convertkit.com/forms/YOUR_FORM_ID/subscriptions"
-```
-
-**Note:** You may also need to update the form method and add hidden fields depending on your email service requirements.
-
-### Update Social Media Links
-
-Search for social media `href="#"` placeholders in `index.html`:
-
-```html
-<!-- Author section (~line 140-160) -->
-<a href="#" class="social-link" aria-label="Instagram">
-<a href="#" class="social-link" aria-label="TikTok">
-<a href="#" class="social-link" aria-label="Goodreads">
-
-<!-- Footer section (~line 235-245) -->
-<!-- Same links repeated -->
-```
-
-Replace `#` with actual profile URLs:
-```html
-<a href="https://instagram.com/yourhandle" class="social-link" aria-label="Instagram">
-<a href="https://tiktok.com/@yourhandle" class="social-link" aria-label="TikTok">
-<a href="https://goodreads.com/author/show/YOUR_ID" class="social-link" aria-label="Goodreads">
-```
-
-### Customize Colors
-
-All colors are defined as CSS custom properties at the top of `styles.css`:
-
-```css
-:root {
-    /* Primary Backgrounds */
-    --color-bg-primary: #1A1A1E;        /* Deep charcoal/near-black */
-    --color-bg-secondary: #2C2C34;       /* Dark slate gray for cards */
-    --color-bg-tertiary: #232328;        /* Slightly lighter for depth */
-
-    /* Accents & Borders */
-    --color-accent-subtle: #6B6B73;      /* Ash/stone gray */
-    --color-border: #3A3A42;             /* Subtle borders */
-
-    /* Text Colors */
-    --color-text-heading: #E8E4DF;       /* Silver white - headings */
-    --color-text-body: #D4CFC7;          /* Warm off-white - body */
-    --color-text-muted: #9A9A9E;         /* Muted text */
-
-    /* Accent Colors (Crimson) */
-    --color-primary: #9B2335;            /* Crimson red - primary accent */
-    --color-primary-hover: #B82E42;      /* Muted crimson - hover state */
-    --color-primary-dark: #7A1C2A;       /* Darker crimson */
-}
-```
-
-### Change Popup Timing
-
-**In `script.js`** (line ~23):
-```javascript
-const CONFIG = {
-    popupDelay: 3000,  // Change this value (in milliseconds)
-    // ...
-};
-```
-
-### Update Meta Tags / SEO
-
-**In `index.html`** head section:
-```html
-<meta name="description" content="Your description here">
-<meta property="og:title" content="Your OG title">
-<meta property="og:description" content="Your OG description">
-<meta property="og:image" content="images/book-cover.jpg">
-<meta property="og:url" content="https://your-actual-url.com">
+python -m http.server 8000     # then visit http://localhost:8000
+# or: npx serve
 ```
 
 ---
@@ -211,75 +41,73 @@ const CONFIG = {
 ## File Structure
 
 ```
-the-last-city-website/
-├── index.html          # Main HTML file
-├── styles.css          # All CSS styles
-├── script.js           # JavaScript functionality
-├── favicon.png         # Browser tab icon (add your own)
+HerringWebsite/
+├── index.html          # Single page (all sections)
+├── styles.css          # All styles ("forest whimsical" theme)
+├── script.js           # Vanilla JS (nav, countdown, carousel, cards, modal)
 ├── README.md           # This file
+├── ref/                # Design references (logo, palette, headshot source)
 └── images/
-    ├── book-cover.jpg  # Book cover image (add your own)
-    └── author-photo.jpg # Author photo (add your own)
+    ├── logo.png        # CR / HERRING monogram (transparent)
+    ├── author.png      # Author headshot
+    └── book-cover.jfif # Book cover
 ```
 
 ---
 
-## Features
+## Customization — Placeholders (easy to swap)
 
-- **Fully Responsive** — Mobile-first design that looks great on all devices
-- **Smooth Scroll Navigation** — Fixed nav with transparent→solid transition
-- **Mobile Hamburger Menu** — Touch-friendly navigation for small screens
-- **Promo Popup Modal** — Timed popup with session storage (shows once per visit)
-- **Bottom Ribbon Banner** — Persistent promo reminder after modal closes
-- **Newsletter Forms** — Ready to connect to Mailchimp/ConvertKit
-- **Lazy Loading Images** — Performance optimization for author photo
-- **Scroll Animations** — Subtle fade-in effects as content enters viewport
-- **Accessibility** — Semantic HTML, ARIA labels, keyboard navigation
-- **Print Styles** — Clean output when printed
-- **Reduced Motion** — Respects user preferences for reduced animations
+| What | Where |
+|------|-------|
+| **Book title** | `index.html` — countdown section, Books `<h2>`, modal text |
+| **Release date** | `index.html` (`countdown-date`, `book-status`) **and** `script.js` → `CONFIG.launchDate` |
+| **Cover image** | replace `images/book-cover.jfif` (update the `src` if renamed) |
+| **Synopsis** | `index.html` → `.synopsis` |
+| **Author bio** | `index.html` → `.author-bio` |
+| **Headshot** | replace `images/author.png` |
+| **Logo** | replace `images/logo.png` (use a transparent PNG) |
+| **Instagram URL** | `index.html` — currently `https://instagram.com/c.r.herring` (3 places) |
+| **TikTok URL** | `index.html` — currently `href="#"` (3 places: author, connect, footer) |
 
----
+### Change the accent color (one-line swap)
 
-## Browser Support
+All theming lives in CSS custom properties at the top of `styles.css`. The primary green is a
+single variable:
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile Safari (iOS 12+)
-- Chrome for Android
+```css
+:root {
+    --color-forest: #34503D;   /* <- change this to re-tint the whole site */
+    /* supporting tones: --color-jade, --color-sage, --color-bg-primary (cream) ... */
+}
+```
 
----
+The palette references the provided green range (mint → forest → emerald). `--color-forest` is
+deliberately a refined forest, not heavily saturated.
 
-## Performance Tips
+### Fonts
 
-1. **Optimize Images** — Compress book-cover.jpg and author-photo.jpg using tools like [TinyPNG](https://tinypng.com) or [Squoosh](https://squoosh.app)
+Headings use **Playfair Display** (echoes the high-contrast serif of the CR monogram); body/UI use
+**Raleway**. Both load from Google Fonts in `index.html`. Swap the `<link>` and the
+`--font-heading` / `--font-body` variables to change them.
 
-2. **Add WebP Versions** — For better compression, create WebP versions of images:
-   ```html
-   <picture>
-     <source srcset="images/book-cover.webp" type="image/webp">
-     <img src="images/book-cover.jpg" alt="...">
-   </picture>
-   ```
+### Connect the newsletter form
 
-3. **Minify CSS/JS** — For production, minify files using tools like [CSS Minifier](https://cssminifier.com) or [JSCompress](https://jscompress.com)
+The forms currently fake a success state in `script.js` (`handleFormSubmit`). To make them live,
+point the `action` of the `.newsletter-form` and `.modal-form` at your provider (Mailchimp,
+ConvertKit, etc.) and remove/adjust the JS handler.
 
----
+### Popup timing
 
-## License
-
-This website template is provided for use by Chrislyn R. Herring. All book content, branding, and intellectual property remain the property of the author.
-
----
-
-## Support
-
-For questions about customization or deployment, refer to:
-- [Netlify Documentation](https://docs.netlify.com)
-- [GitHub Pages Documentation](https://docs.github.com/pages)
-- [MDN Web Docs](https://developer.mozilla.org)
+`script.js` → `CONFIG.popupDelay` (milliseconds). The newsletter popup shows once per session
+(`sessionStorage`); after it's dismissed, the bottom ribbon stays as a persistent reminder.
 
 ---
 
-*Website crafted with care for "The Last City: Age of Darkness"*
+## Deploy
+
+Plain static files — deploy to **GitHub Pages** (current setup), Netlify, or Vercel. No build step.
+For GitHub Pages: push to your branch and serve from the repo root.
+
+---
+
+*Crafted for Chrislyn R. Herring.*

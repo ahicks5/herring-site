@@ -18,7 +18,6 @@
     const modalClose = document.getElementById('modalClose');
     const promoRibbon = document.getElementById('promoRibbon');
     const ribbonClose = document.getElementById('ribbonClose');
-    const copyCodeBtn = document.getElementById('copyCode');
     const bookContainer = document.getElementById('bookContainer');
     const quoteCarousel = document.getElementById('quoteCarousel');
 
@@ -284,8 +283,8 @@
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             `;
-                            btn.style.backgroundColor = '#4ade80';
-                            btn.style.borderColor = '#4ade80';
+                            btn.style.backgroundColor = '#34503D';
+                            btn.style.borderColor = '#34503D';
 
                             setTimeout(() => {
                                 btn.innerHTML = originalHTML;
@@ -368,40 +367,6 @@
     }
 
     // ===========================================
-    // Copy to Clipboard
-    // ===========================================
-
-    async function copyPromoCode() {
-        const code = 'LASTCITY10';
-
-        try {
-            await navigator.clipboard.writeText(code);
-
-            const originalHTML = copyCodeBtn.innerHTML;
-            copyCodeBtn.innerHTML = `
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-            `;
-            copyCodeBtn.style.color = '#4ade80';
-
-            setTimeout(() => {
-                copyCodeBtn.innerHTML = originalHTML;
-                copyCodeBtn.style.color = '';
-            }, 2000);
-        } catch (err) {
-            const textarea = document.createElement('textarea');
-            textarea.value = code;
-            textarea.style.position = 'fixed';
-            textarea.style.opacity = '0';
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-        }
-    }
-
-    // ===========================================
     // Form Handling
     // ===========================================
 
@@ -418,7 +383,7 @@
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Subscribed!';
         submitBtn.disabled = true;
-        submitBtn.style.backgroundColor = '#4ade80';
+        submitBtn.style.backgroundColor = '#34503D';
 
         setTimeout(() => {
             submitBtn.textContent = originalText;
@@ -538,8 +503,6 @@
             e.stopPropagation();
             hidePromoRibbon();
         });
-
-        copyCodeBtn.addEventListener('click', copyPromoCode);
 
         document.querySelectorAll('form').forEach(form => {
             form.addEventListener('submit', handleFormSubmit);
