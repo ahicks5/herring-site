@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ahicks5.github.io/herring-site/sitemap.xml
+Sitemap: https://www.chrislynrherring.com/sitemap.xml
