@@ -7,10 +7,33 @@
     <meta name="author" content="Chrislyn R. Herring">
     <meta property="og:title" content="The Last City: Age of Darkness — Chrislyn R. Herring">
     <meta property="og:description" content="A dark fantasy epic. Releasing June 30, 2026.">
-    <meta property="og:image" content="https://ahicks5.github.io/herring-site/images/book-cover.jfif">
+    <meta property="og:image" content="https://ahicks5.github.io/herring-site/images/book-cover.jpg">
     <meta property="og:type" content="book">
+    <meta property="og:url" content="https://ahicks5.github.io/herring-site/books.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#f6f2e8">
     <title>Books — Chrislyn R. Herring</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="canonical" href="https://ahicks5.github.io/herring-site/books.html">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Book",
+        "name": "The Last City: Age of Darkness",
+        "bookFormat": "https://schema.org/Hardcover",
+        "genre": "Dark Fantasy",
+        "isPartOf": { "@type": "BookSeries", "name": "The Last City", "position": 1 },
+        "datePublished": "2026-06-30",
+        "image": "https://ahicks5.github.io/herring-site/images/book-cover.jpg",
+        "url": "https://ahicks5.github.io/herring-site/books.html",
+        "author": {
+            "@type": "Person",
+            "name": "Chrislyn R. Herring",
+            "url": "https://ahicks5.github.io/herring-site/about.html"
+        }
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -18,12 +41,14 @@
 </head>
 <body>
 
+    <a href="#main" class="skip-link">Skip to content</a>
+
     <header class="nav" id="nav">
         <div class="nav__inner">
             <a href="index.html" class="nav__logo" aria-label="Chrislyn R. Herring — home">
-                <img src="images/logo.png" alt="CR Herring monogram" class="nav__logo-img">
+                <img src="images/logo.png" alt="CR Herring monogram" class="nav__logo-img" width="605" height="519">
             </a>
-            <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
             <nav class="nav__menu" id="navMenu">
                 <a href="index.html" class="nav__link">Home</a>
                 <a href="books.html" class="nav__link nav__link--active">Books</a>
@@ -34,18 +59,20 @@
         </div>
     </header>
 
+    <main id="main">
+
     <section class="release" id="release">
         <div class="wrap release__inner">
             <header class="release__head reveal">
                 <p class="eyebrow eyebrow--crimson">Upcoming Book Release</p>
-                <h2 class="release__title">The Last City</h2>
+                <h1 class="release__title">The Last City</h1>
                 <p class="release__sub">Age of Darkness &middot; Book One</p>
             </header>
 
             <div class="release__grid">
                 <div class="release__cover-col reveal">
                     <div class="release__cover-wrap">
-                        <img src="images/book-cover.jfif" alt="The Last City: Age of Darkness — book cover" class="release__cover">
+                        <img src="images/book-cover.jpg" alt="The Last City: Age of Darkness — book cover" class="release__cover" width="464" height="695">
                     </div>
                     <a href="connect.html" class="btn btn--crimson btn--block btn--lg">Notify Me at Release</a>
                     <p class="release__status">Pre-orders coming soon</p>
@@ -58,7 +85,7 @@
                 </div>
 
                 <div class="release__body reveal">
-                    <div class="countdown">
+                    <div class="countdown" data-launch="2026-06-30T00:00:00">
                         <div class="countdown__cell"><span class="countdown__num" id="cdDays">00</span><span class="countdown__lbl">Days</span></div>
                         <div class="countdown__cell"><span class="countdown__num" id="cdHours">00</span><span class="countdown__lbl">Hours</span></div>
                         <div class="countdown__cell"><span class="countdown__num" id="cdMins">00</span><span class="countdown__lbl">Minutes</span></div>
@@ -83,9 +110,11 @@
         </div>
     </section>
 
+    </main>
+
     <footer class="footer">
         <div class="wrap footer__inner">
-            <img src="images/logo.png" alt="CR Herring monogram" class="footer__logo">
+            <img src="images/logo.png" alt="CR Herring monogram" class="footer__logo" width="605" height="519">
             <nav class="footer__nav">
                 <a href="index.html">Home</a>
                 <a href="books.html">Books</a>

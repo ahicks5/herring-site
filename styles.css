@@ -55,6 +55,13 @@ body {
 }
 
 /* ---- Helpers ---- */
+.skip-link {
+    position: absolute; left: -9999px; top: 0; z-index: 200;
+    padding: .8rem 1.4rem; background: var(--forest); color: var(--cream);
+    font-size: .8rem; letter-spacing: .1em; text-transform: uppercase;
+}
+.skip-link:focus { left: 0; }
+
 .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
 .section { padding: clamp(4rem, 9vw, 7rem) 0; }
 
@@ -158,6 +165,7 @@ body {
     .nav__menu.open { opacity: 1; visibility: visible; transform: none; }
     .nav__link { font-size: 1.35rem; letter-spacing: .18em; }
     .nav__cta { margin-top: 1rem; font-size: .8rem; padding: .9rem 2.2rem; }
+    body.menu-open { overflow: hidden; }
 }
 
 /* =========================================================
@@ -225,7 +233,9 @@ body {
     border-radius: var(--radius); background: rgba(255,255,255,.04);
 }
 .countdown__num { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 6vw, 3rem); line-height: 1; color: var(--cream); }
-.countdown__lbl { font-size: .56rem; letter-spacing: .2em; text-transform: uppercase; color: var(--mint); margin-top: .5rem; }
+.countdown__lbl { font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: var(--mint); margin-top: .5rem; }
+.countdown__done { font-family: var(--serif); font-style: italic; font-size: clamp(1.6rem, 4vw, 2.2rem); color: var(--cream); }
+.release .countdown__done { color: var(--r-head); }
 
 /* =========================================================
    BOOKS PAGE — the book's own dark / crimson world
@@ -237,7 +247,8 @@ body {
     --r-muted:    #9c968c;
     --r-line:     rgba(232,228,223,.14);
 
-    position: relative; overflow: hidden; color: var(--r-text);
+    /* clip, not hidden: an overflow-hidden ancestor disables the sticky cover column */
+    position: relative; overflow: hidden; overflow: clip; color: var(--r-text);
     padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(4rem, 9vw, 7rem);
     background:
         radial-gradient(70% 55% at 82% 0%, rgba(194,58,82,.16), transparent 60%),

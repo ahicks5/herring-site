@@ -8,8 +8,6 @@
 
     document.documentElement.classList.add('js');
 
-    var LAUNCH = new Date('2026-06-30T00:00:00').getTime();
-
     /* ---------- Nav: scroll shadow + mobile menu ---------- */
     var nav = document.getElementById('nav');
     if (nav) {
@@ -21,37 +19,53 @@
     var toggle = document.getElementById('navToggle');
     var menu = document.getElementById('navMenu');
     if (toggle && menu) {
-        toggle.addEventListener('click', function () {
-            var open = menu.classList.toggle('open');
+        var setMenu = function (open) {
+            menu.classList.toggle('open', open);
             toggle.classList.toggle('open', open);
             toggle.setAttribute('aria-expanded', String(open));
+            toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            document.body.classList.toggle('menu-open', open);
+        };
+        toggle.addEventListener('click', function () {
+            setMenu(!menu.classList.contains('open'));
         });
         menu.querySelectorAll('a').forEach(function (a) {
-            a.addEventListener('click', function () {
-                toggle.classList.remove('open');
-                menu.classList.remove('open');
-                toggle.setAttribute('aria-expanded', 'false');
-            });
+            a.addEventListener('click', function () { setMenu(false); });
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && menu.classList.contains('open')) {
+                setMenu(false);
+                toggle.focus();
+            }
         });
     }
 
     /* ---------- Countdown (only where present) ---------- */
-    var elDays = document.getElementById('cdDays');
-    if (elDays) {
+    var countdown = document.querySelector('.countdown[data-launch]');
+    if (countdown) {
+        var launch = new Date(countdown.getAttribute('data-launch')).getTime();
+        var elDays = document.getElementById('cdDays');
         var elHours = document.getElementById('cdHours');
         var elMins = document.getElementById('cdMins');
         var elSecs = document.getElementById('cdSecs');
         var pad = function (n) { return String(n).padStart(2, '0'); };
+        var timer;
+        var finish = function () {
+            clearInterval(timer);
+            countdown.innerHTML = '<p class="countdown__done">Out now</p>';
+            var date = document.querySelector('.highlight__date, .release__date');
+            if (date) date.textContent = 'Available now';
+        };
         var tick = function () {
-            var diff = LAUNCH - Date.now();
-            if (diff < 0) diff = 0;
+            var diff = launch - Date.now();
+            if (diff <= 0) { finish(); return; }
             elDays.textContent = pad(Math.floor(diff / 86400000));
             elHours.textContent = pad(Math.floor((diff % 86400000) / 3600000));
             elMins.textContent = pad(Math.floor((diff % 3600000) / 60000));
             elSecs.textContent = pad(Math.floor((diff % 60000) / 1000));
         };
         tick();
-        setInterval(tick, 1000);
+        if (launch - Date.now() > 0) timer = setInterval(tick, 1000);
     }
 
     /* ---------- Reveal on scroll ---------- */
