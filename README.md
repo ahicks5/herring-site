@@ -9,7 +9,7 @@ dark/crimson treatment.
 
 Built with vanilla HTML, CSS, and JavaScript — no frameworks, no build tools required.
 
-Live at: https://ahicks5.github.io/herring-site/
+Live at: https://www.chrislynrherring.com/
 
 ---
 
@@ -45,7 +45,7 @@ HerringWebsite/
 ├── books.html              # The book (dark/crimson theme)
 ├── about.html              # Author bio
 ├── connect.html            # Newsletter signup
-├── 404.html                # GitHub Pages not-found page (uses absolute /herring-site/ paths)
+├── 404.html                # GitHub Pages not-found page (uses absolute root paths)
 ├── styles.css              # All styles ("forest whimsical" theme + book-page dark theme)
 ├── script.js               # Vanilla JS (nav, mobile menu, countdown, reveal, form placeholder)
 ├── robots.txt / sitemap.xml
@@ -77,7 +77,7 @@ footer means editing all four pages (plus `404.html` for shared styles).
 | **Logo / favicon** | replace `images/logo.png`, then regenerate `favicon.png` (square) and `apple-touch-icon.png` |
 | **Instagram URL** | `about.html` + `connect.html` — currently `https://instagram.com/c.r.herring` |
 | **TikTok** | removed until the account exists — re-add an `.iconbtn` link in `about.html` / `connect.html` |
-| **Site URL** | `og:url`, `canonical`, JSON-LD, `sitemap.xml`, `robots.txt`, `404.html` all hardcode `https://ahicks5.github.io/herring-site/` — update everywhere if the domain changes |
+| **Site URL** | `og:url`, `canonical`, JSON-LD, `sitemap.xml`, `robots.txt`, `404.html` all hardcode `https://www.chrislynrherring.com/` — update everywhere if the domain changes |
 
 ### Change the accent color (one-line swap)
 
@@ -114,8 +114,9 @@ MailerLite, …) and replace the placeholder submit handler.
 ## Deploy
 
 Plain static files — deployed to **GitHub Pages** from the repo root (`ahicks5/herring-site`,
-`master` branch). Push and it's live; no build step. Also works on Netlify or Vercel (update the
-hardcoded URLs listed above if the domain changes).
+`master` branch) with the custom domain `www.chrislynrherring.com` (set via `CNAME`). Push and
+it's live; no build step. Also works on Netlify or Vercel (update the hardcoded URLs listed
+above if the domain changes).
 
 ---
 
