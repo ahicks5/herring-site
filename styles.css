@@ -218,9 +218,20 @@ body {
 .highlight__title { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 5vw, 3.2rem); color: var(--cream); margin: .5rem 0 .3rem; line-height: 1.05; }
 .highlight__sub { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--mint); margin-bottom: 1.6rem; }
 .highlight__date { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--mint); margin: 1.2rem 0 1.6rem; }
+.highlight__blurb { color: var(--mint); max-width: 46ch; margin: 0 0 1.9rem; }
+
+/* Buy links (where to buy the book) */
+.buylinks { margin-bottom: 1.9rem; }
+.buylinks__label { font-size: .7rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--sage); margin-bottom: .85rem; }
+.buylinks__row { display: flex; flex-wrap: wrap; gap: .7rem; }
+.buylink { background: var(--cream); color: var(--forest); border-color: var(--cream); }
+.buylink:hover { background: var(--mint); border-color: var(--mint); color: var(--forest-deep); transform: translateY(-2px); box-shadow: var(--shadow); }
+
 @media (max-width: 760px) {
     .highlight__inner { grid-template-columns: 1fr; text-align: center; gap: 2.2rem; }
     .highlight .countdown { justify-content: center; }
+    .highlight__blurb { margin-left: auto; margin-right: auto; }
+    .highlight .buylinks__row { justify-content: center; }
 }
 
 /* =========================================================
