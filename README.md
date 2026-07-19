@@ -1,7 +1,7 @@
 # Chrislyn R. Herring — Author Website
 
 A clean, literary multi-page website for dark fantasy author **Chrislyn R. Herring**, with her
-upcoming debut novel featured prominently.
+debut novel featured prominently.
 
 Aesthetic: *forest whimsical* — cream base, forest-green accent, elegant serif headings
 (Cormorant Garamond) over a simple sans-serif body (Raleway). The book page gets its own
@@ -19,8 +19,8 @@ Four pages sharing one stylesheet and one script:
 
 | Page | File | Purpose |
 |------|------|---------|
-| **Home** | `index.html` | Hero (name, tagline, CTAs) + upcoming-book highlight with live countdown |
-| **Books** | `books.html` | The book: cover, synopsis, genre tags, release meta, countdown |
+| **Home** | `index.html` | Hero (name, tagline, CTAs) + released-book highlight with buy links |
+| **Books** | `books.html` | The book: cover, synopsis, genre tags, release meta, buy links |
 | **About** | `about.html` | Bio + headshot + social links |
 | **Connect** | `connect.html` | Newsletter signup (the #1 CTA) + Instagram |
 
@@ -69,7 +69,7 @@ footer means editing all four pages (plus `404.html` for shared styles).
 | What | Where |
 |------|-------|
 | **Book title** | `index.html` (highlight section), `books.html` (title, synopsis, JSON-LD), meta tags |
-| **Release date** | `data-launch` attribute on the `.countdown` div in `index.html` **and** `books.html` (drives the JS countdown), plus the visible "Releasing …" text, meta descriptions, and the JSON-LD `datePublished` in `books.html` |
+| **Buy links** | retailer buttons in the `.buylinks` row on `index.html` (highlight) and `books.html` (cover column). Add a store by dropping another `<a class="btn buylink">` (home) or `<a class="btn btn--crimson btn--block">` (book page) into the `.buylinks__row` / `.buylinks--stack` |
 | **Cover image** | replace `images/book-cover.jpg` (update `src` + `og:image` if renamed) |
 | **Synopsis** | `books.html` → `.release__body` |
 | **Author bio** | `about.html` → `.about__text` |
@@ -97,11 +97,12 @@ The book page's dark/crimson palette is scoped separately under `.release` (`--r
 Headings use **Cormorant Garamond**; body/UI use **Raleway**. Both load from Google Fonts in each
 page's `<head>`. Swap the `<link>` and the `--serif` / `--sans` variables in `styles.css` to change them.
 
-### Countdown
+### Countdown (unused — book is released)
 
-The launch moment comes from the `data-launch` attribute (`2026-06-30T00:00:00`, parsed in the
-visitor's local timezone). When the date passes, the countdown is replaced with "Out now" and the
-date line switches to "Available now" automatically.
+The book is now out, so no countdown runs on the live pages. The countdown handler still lives in
+`script.js` (guarded, so it's inert when no `.countdown[data-launch]` element is present). To reuse it
+for a future release, add a `.countdown` block with a `data-launch` attribute; when the date passes it
+is replaced with "Out now" and any `.highlight__date` / `.release__date` line switches to "Available now".
 
 ### Connect the newsletter form (not yet wired)
 
